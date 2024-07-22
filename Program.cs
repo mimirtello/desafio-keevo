@@ -1,8 +1,13 @@
+using DesafioKeevo.Model;
+using DesafioKeevo.Model.Repositorio;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<ITarefaRepositorio, TarefaRepositorio>();
 
 var app = builder.Build();
 
