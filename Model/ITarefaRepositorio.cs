@@ -7,5 +7,12 @@ namespace DesafioKeevo.Model
         void Add(Tarefa tarefa);
 
         List<Tarefa> Get();
+
+        bool Update(Tarefa tarefa);
+
+        bool Delete(int id);
+
+        Tarefa GetById(int Id);
+
     }
 }

@@ -1,0 +1,72 @@
+<div class="gerenciador-tarefas">
+  <h2>Lista de Tarefas</h2>
+
+  <form (ngSubmit)="salvarTarefa(tarefaParaEditar)">
+    <input type="hidden" [(ngModel)]="tarefaParaEditar.id">
+    <!--<div *ngIf="!tarefaParaEditar">-->
+    <div>
+      <input type="text" [(ngModel)]="novaTarefaTitulo" placeholder="Título da Tarefa">
+      <textarea [(ngModel)]="novaTarefaDescricao" placeholder="Descrição da Tarefa"></textarea>
+      <select [(ngModel)]="novaTarefaStatus">
+        <option value="pendente">Pendente</option>
+        <option value="em andamento">Em Andamento</option>
+        <option value="concluída">Concluída</option>
+      </select>
+      <button type="submit">Adicionar Tarefa</button>
+    </div>
+
+    <table *ngIf="tarefaParaEditar">
+      <tr>
+        <th>Título</th>
+        <td><input type="text" [(ngModel)]="tarefaParaEditar.titulo"></td>
+      </tr>
+      <tr>
+        <th>Descrição</th>
+        <td><textarea [(ngModel)]="tarefaParaEditar.descricao"></textarea></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          <select [(ngModel)]="tarefaParaEditar.status">
+            <option value="pendente">Pendente</option>
+            <option value="em andamento">Em Andamento</option>
+            <option value="concluída">Concluída</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit">Salvar</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarefa of tarefas">
+        <td>{{ tarefa.titulo }}</td>
+        <td>{{ tarefa.descricao }}</td>
+        <td><span [ngClass]="{'task-pending': tarefa.status === 'pendente', 'task-in-progress': tarefa.status === 'em andamento', 'task-done': tarefa.status === 'concluída'}">{{ tarefa.status }}</span></td>
+        <td>
+          <button (click)="editarTarefa(tarefa)">Editar</button>
+          <button (click)="excluirTarefa(tarefa.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="error-message" *ngIf="!tarefaParaEditar">
+    Nenhuma tarefa selecionada para editar.
+  </div>
+</div>
+
+  

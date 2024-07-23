@@ -1,0 +1,12 @@
+
+.task-pending {
+  color: red;
+}
+
+.task-in-progress {
+  color: orange;
+}
+
+.task-done {
+  color: green;
+}

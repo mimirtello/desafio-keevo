@@ -18,13 +18,19 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\nav-menu\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\nav-menu\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\nav-menu\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\nav-menu\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.css" />
+    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.html" />
+    <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
